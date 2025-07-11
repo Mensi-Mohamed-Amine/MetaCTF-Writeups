@@ -1,0 +1,37 @@
+from collections import deque
+
+def decrypt(ciphertext, outer_wheel, inner_wheel):
+    decrypted_text = ""
+    for char in ciphertext:
+        if char in outer_wheel:
+            index = outer_wheel.index(char)
+            decrypted_text += inner_wheel[index]
+        else:
+            decrypted_text += char
+    return decrypted_text
+
+
+def find_flag (ciphertext, outer_wheel, inner_wheel):
+    for char in ciphertext:
+        decrypted_text = decrypt(ciphertext, outer_wheel, inner_wheel)
+
+        items = deque(inner_wheel)
+        items.rotate(1)
+        inner_wheel = ''.join(items)
+        if "METACTF{" in decrypted_text:
+            return decrypted_text
+
+
+
+# Define the wheels
+outer_wheel = "ABCDEFGHIJKLMNOPQRSTUVWXYZ{}"
+inner_wheel = "QNFUVWLEZYXPTKMR}ABJICOSDHG{"
+
+# Ciphertext
+ciphertext = "RKPUYPFCIAKKJMYZZJT"
+
+
+print(find_flag(ciphertext, outer_wheel, inner_wheel))
+
+
+# METACTF{WHEELYCOOL}
