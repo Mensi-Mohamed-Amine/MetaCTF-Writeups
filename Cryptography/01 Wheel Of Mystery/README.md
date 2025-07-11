@@ -10,29 +10,28 @@
 
 ### Understanding the Cipher
 
-The provided image shows a **substitution cipher wheel** with two concentric rings:
+The challenge presents a cipher wheel composed of two concentric rings:
 
-- The **outer ring** remains fixed.
-- The **inner ring** rotates one position with each decryption attempt.
+- The **outer wheel** is static and contains the characters `A-Z{}` in order.
+- The **inner wheel** rotates, effectively changing the mapping between ciphertext and plaintext characters with each possible position.
 
-The substitution follows this mapping:
-
-```
-Outer (plaintext) -> Inner (ciphertext)
-```
-
-Since the inner wheel rotates step by step, this mimics a **rotating Caesar cipher**, or a **wheel-based monoalphabetic cipher**.
+This setup functions as a monoalphabetic substitution cipher, but with a twist: each rotation of the inner wheel generates a new substitution mapping. Therefore, the cipher can be solved by trying all possible rotations until the correct plaintext—starting with the known flag prefix `METACTF{`—is revealed.
 
 ---
 
 ### Decryption Approach
 
-To decrypt the message, we simulate the rotating inner wheel. For each decryption attempt:
+To decrypt the message, we simulate the rotation of the inner wheel and apply a character-by-character substitution:
 
-1. Align the current `inner_wheel` with the fixed `outer_wheel`.
-2. Substitute each character in the ciphertext using the current mapping.
-3. Rotate the inner wheel by one position for the next attempt.
-4. Stop when the output contains a recognizable flag pattern (e.g., `METACTF{`).
+1. **For each possible rotation** of the inner wheel:
+
+   - Align the inner wheel to a new position by rotating it.
+   - For every character in the ciphertext, find its index in the outer wheel and substitute it with the character at the same index in the current (rotated) inner wheel.
+
+2. **Check if the resulting plaintext** begins with the known flag format `METACTF{`.
+3. **Stop when a match is found**, and return the decrypted message as the flag.
+
+This brute-force method is practical due to the small size of the character set (28 characters in total), and it ensures that the correct rotation is discovered efficiently.
 
 ---
 
