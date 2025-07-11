@@ -1,22 +1,10 @@
-Here is a clean and concise **writeup** for the cryptography challenge, without emojis:
+## Wheel Of Mystery Writeup
 
 ---
 
-## Cryptography Challenge Writeup: Decrypting the Rotating Cipher Wheel
-
 ### Challenge Description
 
-My friend wanted to communicate using a secret cipher.
-He gave me the following ciphertext:
-
-```
-RKPUYPFCIAKKJMYZZJT
-```
-
-Along with a cipher wheel, where:
-
-- The **outer wheel** contains the characters: `A-Z{}`
-- The **inner wheel** rotates, changing the substitution mapping each time
+![Alt text](img/1.png)
 
 ---
 
