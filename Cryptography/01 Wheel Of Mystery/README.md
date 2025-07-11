@@ -1,4 +1,4 @@
-## Wheel Of Mystery Writeup
+## Wheel Of Mystery - Writeup
 
 ---
 
