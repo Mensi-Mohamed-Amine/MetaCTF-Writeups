@@ -88,7 +88,3 @@ METACTF{WHEELYCOOL}
 This challenge used a dynamic substitution cipher, where the **inner wheel rotates** with each decryption attempt. The flag was successfully revealed by simulating this rotation and testing for a known prefix.
 
 **Flag:** `METACTF{WHEELYCOOL}`
-
----
-
-Let me know if you want a version formatted for a PDF or a CTF platform submission.
